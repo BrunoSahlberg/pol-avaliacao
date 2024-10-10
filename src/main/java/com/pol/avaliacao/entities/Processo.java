@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 @Entity
 public class Processo {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer numero_processo;
 	private String autor;
 	private String reu;
