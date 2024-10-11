@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.pol.avaliacao.entities.Processo;
 
 @Repository
-public interface ProcessoRepository extends JpaRepository<Processo, Integer>{
+public interface ProcessoRepository extends JpaRepository<Processo, Integer> {
 }

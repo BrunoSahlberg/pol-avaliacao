@@ -1,6 +1,6 @@
 package com.pol.avaliacao.entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,18 +12,18 @@ import jakarta.persistence.Table;
 @Entity
 public class Processo {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer numero_processo;
 	private String autor;
 	private String reu;
 	private String status;
-	private Date data_criacao;
+	private LocalDate data_criacao;
 
 	public Processo() {
-		
+
 	}
-	
-	public Processo(Integer numero_processo, String autor, String reu, String status, Date data_criacao) {
+
+	public Processo(Integer numero_processo, String autor, String reu, String status, LocalDate data_criacao) {
 		this.numero_processo = numero_processo;
 		this.autor = autor;
 		this.reu = reu;
@@ -63,11 +63,11 @@ public class Processo {
 		this.status = status;
 	}
 
-	public Date getData_criacao() {
+	public LocalDate getData_criacao() {
 		return data_criacao;
 	}
 
-	public void setData_criacao(Date data_criacao) {
+	public void setData_criacao(LocalDate data_criacao) {
 		this.data_criacao = data_criacao;
 	}
 }

@@ -1,13 +1,13 @@
 package com.pol.avaliacao.entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class ProcessoDTO {
 	private Integer numero_processo;
 	private String autor;
 	private String reu;
 	private String status;
-	private Date data_criacao;
+	private LocalDate data_criacao;
 
 	public Integer getNumero_processo() {
 		return numero_processo;
@@ -41,11 +41,11 @@ public class ProcessoDTO {
 		this.status = status;
 	}
 
-	public Date getData_criacao() {
+	public LocalDate getData_criacao() {
 		return data_criacao;
 	}
 
-	public void setData_criacao(Date data_criacao) {
+	public void setData_criacao(LocalDate data_criacao) {
 		this.data_criacao = data_criacao;
 	}
 

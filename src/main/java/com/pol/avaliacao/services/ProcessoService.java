@@ -1,5 +1,6 @@
 package com.pol.avaliacao.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,17 +28,31 @@ public class ProcessoService {
 		processo.setAutor(processoDto.getAutor());
 		processo.setReu(processoDto.getReu());
 		processo.setStatus(processoDto.getStatus());
-		processo.setData_criacao(processoDto.getData_criacao());
+
+		if (processoDto.getData_criacao() == null) {
+			processo.setData_criacao(LocalDate.now()); // Define a data atual
+		} else {
+			processo.setData_criacao(processoDto.getData_criacao());
+		}
+
 		repository.save(processo);
 		return processoDto;
 	}
 
 	public ProcessoDTO updateProcesso(ProcessoDTO processoDto, Integer processoId) {
 		Processo processoDb = repository.getReferenceById(processoId);
-		processoDb.setNumero_processo(processoDto.getNumero_processo());
-		processoDb.setReu(processoDto.getReu());
-		processoDb.setAutor(processoDto.getAutor());
-		processoDb.setStatus(processoDto.getStatus());
+
+		if (processoDto.getReu() != null && !processoDto.getReu().isEmpty()) {
+			processoDb.setReu(processoDto.getReu());
+		}
+
+		if (processoDto.getAutor() != null && !processoDto.getAutor().isEmpty()) {
+			processoDb.setAutor(processoDto.getAutor());
+		}
+
+		if (processoDto.getStatus() != null && !processoDto.getStatus().isEmpty()) {
+			processoDb.setStatus(processoDto.getStatus());
+		}
 
 		repository.save(processoDb);
 		return processoDto;
@@ -67,7 +82,7 @@ public class ProcessoService {
 			throw new IllegalArgumentException("O processo com este número não existe no banco de dados.");
 		}
 		repository.deleteById(processoId);
-		return "Processo deletado!";
+		return "Processo " + processoId + " deletado!";
 	}
 
 }
